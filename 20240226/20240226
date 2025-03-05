@@ -1,0 +1,63 @@
+Sono date N attività, ognuna caratterizzata da quattro elementi: nome dell’attività, tempo di inizio, durata, profitto o
+valore associato (>= 0). Il nome (stringa alfanumerica di lunghezza fino a 20 caratteri) è unico. Ogni attività può avere
+un requisito di precedenza: una o due altre attività devono essere terminate prima di iniziare quella in questione.
+L'obiettivo è determinare il sottoinsieme di attività con profitto massimo che siano compatibili tra loro, ossia che non
+si sovrappongano e rispettino i vincoli di precedenza.
+
+Richieste:
+
+Strutture dati e lettura dei dati
+
+Definire una struttura dati principale per rappresentare le attività come un ADT di prima classe.
+Scrivere la funzione ACT activityRead(FILE *f) per acquisire i dati da un file testo. Il file contiene un elenco di
+attività e vincoli di precedenza.
+
+Problema di verifica
+
+Scrivere la funzione int checkSelection(ACT a, char **selected, int nsel) per verificare se un sottoinsieme di attività
+è compatibile con i vincoli di precedenza e di sovrapposizione.
+
+Problema di ottimizzazione
+
+Scrivere la funzione bestSelection per trovare il sottoinsieme ottimo di attività che massimizza il profitto, rispettando
+i vincoli e le sovrapposizioni. La funzione deve restituire l'elenco delle attività selezionate, ordinate per tempo di
+inizio, e il profitto totale. Un esempio di file di input:
+
+4 2
+
+Act1 1 1 50
+Act2 3 2 20
+Act4 2 98 200
+Act3 6 13 100
+
+Act4 Act1
+Act3 Act2 Act1
+
+
+DOMANDA 7
+Definire opportune strutture dati per rappresentare i dati del problema e tutte le strutture ausiliarie ritenute opportune
+per la risoluzione dei problemi di verifica e di ricerca/ottimizzazione. La struttura dati principale deve essere rappresentata
+come ADT di prima classe, compatibile con la seguente definizione:
+typedef struct activities *ACT;
+
+Scrivere la funzione avente il seguente prototipo:
+ACT activityRead(FILE *f);
+La funzione deve acquisire i dati da un file di testo, che ha il formato:
+
+NA NP
+<Elenco attività (quaterne: nome inizio durata valore)>
+<Elenco precedenze (coppie o terne di nomi, il primo è l'attività vincolata, il secondo e/o il terzo sono le attività che vanno eseguite prima)>
+L'ordine in cui sono riportate le attività e le precedenze è arbitrario. Di seguito è riportato un esempio di file:
+
+4 2
+
+Act1 1 1 50
+Act2 3 2 20
+Act4 2 98 200
+Act3 6 13 100
+
+Act4 Act1
+Act3 Act2 Act1
+
+In questo esempio, ci sono 4 attività e 2 precedenze. Ogni attività ha un nome, un tempo di inizio, una durata e un valore (profitto).
+Le precedenze specificano che l'attività Act4 deve essere preceduta da Act1, e l'attività Act3 deve essere preceduta da Act2 e Act1.
